@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/28 22:29:37 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:45:03 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		read_file(t_ants *ants)
 	i = 0;
 	get_next_line(0, &line);
 	ants->ant_count = ft_atoi(line);
-	if (ants->ant_count == 0)
+	if (ants->ant_count <= 0 || ants->ant_count > 2147483647)
 		ft_error();
 	// ft_putnbr(ants->ant_count);
 	// ft_putchar('\n');
