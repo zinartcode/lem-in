@@ -6,13 +6,18 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/28 21:40:04 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:29:28 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../libft/includes/libft.h"
 # include <stdlib.h>
+# include <stdio.h>
 #define SIZE 40
+# define RED "\x1B[31m"
+# define GRN "\x1B[32m"
+# define YEL "\x1B[33m"
+# define NRM "\x1B[0m"
 
 struct queue {
     int items[SIZE];

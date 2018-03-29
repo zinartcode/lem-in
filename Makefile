@@ -21,6 +21,6 @@ clean:
 	make -C libft/ clean
 	rm -rf $(BINS)
 fclean: clean
-	# make -C libft/ fclean
+	make -C libft/ fclean
 	rm -f $(NAME)
 re: fclean all

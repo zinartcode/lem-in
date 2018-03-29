@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/28 21:47:29 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/28 22:29:37 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int		read_file(t_ants *ants)
 	int		i;
 
 	i = 0;
+	get_next_line(0, &line);
+	ants->ant_count = ft_atoi(line);
+	if (ants->ant_count == 0)
+		ft_error();
+	// ft_putnbr(ants->ant_count);
+	// ft_putchar('\n');
+	// ft_putchar('\n');
 	while (get_next_line(i, &line))
 	{
 		ft_putstr(line);
@@ -50,5 +57,6 @@ int		read_file(t_ants *ants)
 
 void	ft_error(void)
 {
-	ft_putstr("ERROR");
+	ft_putstr_fd(RED"Error\n"NRM, 2);
+	exit(0);
 }
