@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lemin.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
+/*   Updated: 2018/03/28 21:40:04 by azinnatu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "../libft/includes/libft.h"
+# include <stdlib.h>
+#define SIZE 40
+
+struct queue {
+    int items[SIZE];
+    int front;
+    int rear;
+}		t_queue;
+
+typedef	struct			s_ants
+{
+	int					ant_count;
+	struct s_room		*rooms;
+	struct s_link		*paths;
+}						t_ants;
+
+typedef struct			s_link
+{
+	char				*name;
+	int					seen;
+	int					donotuse;
+	int					shortest;
+	int					number_of_ant;
+	int					len;
+	struct s_link		*path;
+	struct s_link		*next;
+}						t_link;
+
+typedef	struct			s_room
+{
+	char				*name;
+	int					position;
+	struct s_links		*links;
+	int					visited;
+	struct s_room		*next;
+}						t_room;
+
+void					init(t_ants *ants);
+int						read_file(t_ants *ants);
+void					ft_solve (t_ants *ants);
+void					ft_error(void);
