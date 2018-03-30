@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lowcase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/26 15:46:00 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 21:21:37 by azinnatu         ###   ########.fr       */
+/*   Created: 2018/03/29 20:55:22 by azinnatu          #+#    #+#             */
+/*   Updated: 2018/03/29 21:19:46 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int		ft_isdigit(int c)
+void	ft_lowcase(char *str)
 {
-	if (c >= '0' && c <= '9')
+	int i;
+
+	i = -1;
+	while (str[++i])
 	{
-		return (1);
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
 	}
-	return (0);
 }

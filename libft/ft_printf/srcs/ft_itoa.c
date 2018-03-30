@@ -5,47 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/26 15:46:33 by azinnatu          #+#    #+#             */
-/*   Updated: 2017/07/26 15:46:35 by azinnatu         ###   ########.fr       */
+/*   Created: 2018/03/29 20:55:22 by azinnatu          #+#    #+#             */
+/*   Updated: 2018/03/29 21:21:48 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static char	ch_sign(int n)
+static void	ft_lenght(intmax_t n, int *len)
 {
-	if (n > 0)
-		return ('+');
-	else if (n < 0)
-		return ('-');
-	return ('0');
+	int	i;
+
+	i = 1;
+	if (n < 0)
+	{
+		i++;
+		n *= -1;
+	}
+	while (n > 9)
+	{
+		i++;
+		n /= 10;
+	}
+	*len = i;
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(intmax_t n)
 {
-	char			sign;
-	char			*str;
-	short			index;
-	unsigned int	tmp;
-	unsigned int	v;
+	char	*s;
+	int		len;
 
-	sign = ch_sign(n);
-	v = sign == '-' ? -n : n;
-	tmp = v;
-	index = sign != '+' ? 1 : 0;
-	while (tmp)
-	{
-		index++;
-		tmp /= 10;
-	}
-	if (!(str = ft_strnew(index)))
+	ft_lenght(n, &len);
+	if (n == LLONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
+	if (!(s = (char*)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	str[0] = sign;
-	while (v)
+	s[len] = '\0';
+	if (n < 0)
 	{
-		index--;
-		str[index] = v % 10 + '0';
-		v /= 10;
+		s[0] = '-';
+		n *= -1;
 	}
-	return (str);
+	while (n > 9)
+	{
+		s[--len] = (n % 10) + 48;
+		n /= 10;
+	}
+	s[--len] = n + 48;
+	return (s);
 }

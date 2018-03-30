@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/26 15:46:00 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 21:21:37 by azinnatu         ###   ########.fr       */
+/*   Created: 2018/03/29 20:55:22 by azinnatu          #+#    #+#             */
+/*   Updated: 2018/03/29 21:21:50 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int		ft_isdigit(int c)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	if (c >= '0' && c <= '9')
+	int		i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(s1);
+	while (s2[i] != '\0')
 	{
-		return (1);
+		s1[len + i] = s2[i];
+		i++;
 	}
-	return (0);
+	s1[len + i] = '\0';
+	return (s1);
 }

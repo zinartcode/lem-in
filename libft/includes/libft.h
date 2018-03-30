@@ -6,13 +6,14 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 15:43:42 by azinnatu          #+#    #+#             */
-/*   Updated: 2017/12/13 00:09:22 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 21:19:09 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include "../ft_printf/includes/ft_printf.h"
 # define BUFF_SIZE 32
 
 typedef struct		s_list
@@ -22,6 +23,7 @@ typedef struct		s_list
 	struct s_list	*next;
 	int				data;
 }					t_list;
+
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -57,7 +59,6 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				*ft_memalloc(size_t size);
-char				*ft_itoa(int n);
 void				ft_memdel(void **ap);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(char c);

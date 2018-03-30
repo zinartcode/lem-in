@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 21:28:35 by azinnatu          #+#    #+#              #
-#    Updated: 2018/01/08 21:30:01 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/03/29 21:16:03 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ SRC_NAME += ft_bzero.c \
 			ft_strlen.c \
 			ft_strncpy.c \
 			ft_atoi.c \
-			ft_itoa.c \
 			ft_isalpha.c \
 			ft_isdigit.c \
 			ft_isalnum.c \
@@ -86,7 +85,7 @@ OBJ_PATH = ./obj/
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 
-INC_PATH = ./includes/
+INC_PATH = "includes"
 INC = $(addprefix -I, $(INC_PATH))
 
 all: $(NAME)

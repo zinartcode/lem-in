@@ -6,14 +6,15 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/28 22:29:28 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 21:32:17 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../libft/includes/libft.h"
+# include "../libft/ft_printf/includes/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
-#define SIZE 40
+# define SIZE 40
 # define RED "\x1B[31m"
 # define GRN "\x1B[32m"
 # define YEL "\x1B[33m"
