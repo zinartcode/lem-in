@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 21:32:17 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 22:32:03 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct			s_link
 typedef	struct			s_room
 {
 	char				*name;
+	int					is_start;
+	int					is_end;
 	int					position;
 	struct s_links		*links;
 	int					visited;
@@ -58,3 +60,5 @@ void					init(t_ants *ants);
 int						read_file(t_ants *ants);
 void					ft_solve (t_ants *ants);
 void					ft_error(void);
+int						is_room(char *line);
+void					add_room(t_ants *ants, char *line);

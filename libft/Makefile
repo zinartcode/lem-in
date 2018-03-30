@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/08 21:28:35 by azinnatu          #+#    #+#              #
-#    Updated: 2018/03/29 21:16:03 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/03/29 22:21:30 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ SRC_NAME += ft_bzero.c \
 			ft_strndup.c \
 			ft_strnjoin.c \
 			ft_swap.c \
+			ft_space.c \
 			get_next_line.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))

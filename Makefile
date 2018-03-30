@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/03/29 21:24:00 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/03/29 22:11:48 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ CC = gcc
 
 SRC =	main.c \
 		solve.c \
+		rooms.c \
 
 LIBFT = libft/libft.a
 FT_PRINTF = libft/ft_printf/libftprintf.a
