@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 23:02:56 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 23:42:36 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int			is_link(char *line)
 		return (0);
 	while (line[i])
 	{
-		if (line[i] != '-' && line[i] != ' ')
+		if (line[i] == ' ' || line[i] == '\t')
+			ft_error();
+		if (line[i] != '-')
 			k++;
 		else if (k != 0 && line[i] == '-')
 		{
@@ -36,8 +38,7 @@ int			is_link(char *line)
 	}
 	if (k != 0 && dash == 1)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 void		add_link(t_ants * ants, char *line)
