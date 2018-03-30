@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 22:22:03 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 23:19:51 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,16 @@ int		read_file(t_ants *ants)
 	ft_putnbr(ants->ant_count);
 	ft_putchar('\n');
 	ft_putchar('\n');
-	while (get_next_line(i, &line))
+	while (get_next_line(0, &line))
 	{
 		if (is_room(line))
 			add_room(ants, line);
+		else if (is_link(line))
+			add_link(ants, line);
+		else if (is_comment(line))
+			;
+		else
+			ft_error();
 		// ft_putstr(line);
 		// ft_putchar('\n');
 	}

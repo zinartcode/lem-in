@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 22:33:28 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 23:19:12 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,7 @@ int						read_file(t_ants *ants);
 void					ft_solve (t_ants *ants);
 void					ft_error(void);
 int						is_room(char *line);
+int						is_link(char *line);
+int						is_comment(char *line);
 void					add_room(t_ants *ants, char *line);
+void					add_link(t_ants * ants, char *line);

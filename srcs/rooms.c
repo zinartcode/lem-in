@@ -6,13 +6,13 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/29 22:22:04 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/29 23:18:46 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/lemin.h"
 
-int	is_room(char *line)
+int		is_room(char *line)
 {
 	if (line[0] == '#' || line[0] == 'L')
 		return (0);
@@ -24,4 +24,11 @@ int	is_room(char *line)
 void	add_room(t_ants *ants, char *line)
 {
 	ft_printf("this is room: %s\n", line);
+}
+int		is_comment(char *line)
+{
+	if (line[0] == '#' || line[0] == 'L')
+		return (1);
+	else
+		return (0);
 }
