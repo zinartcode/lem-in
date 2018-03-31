@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 20:14:03 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:38:59 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	add_room(t_ants *ants, char *line)
 		temp->rooms = new;
 	}
 	ants->flag = 0;
+	free(new->name);
+	free(new);
 	print_rooms(ants);
 }
 

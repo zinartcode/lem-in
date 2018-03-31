@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 20:07:14 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:26:29 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void					ft_solve (t_ants *ants);
 void					ft_error(void);
 int						is_room(char *line);
 int						is_link(char *line);
+int						valid_link(t_ants *ants, char *line);
 int						is_comment(char *line);
 void					add_room(t_ants *ants, char *line);
-void					add_link(t_ants * ants, char *line);
+void					add_link(t_ants *ants, char *line);
 
 void					print_rooms(t_ants *ants);

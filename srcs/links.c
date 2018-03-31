@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 19:44:32 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:16:36 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,55 @@ int			is_link(char *line)
 	return (0);
 }
 
-void		add_link(t_ants * ants, char *line)
+void		add_link(t_ants *ants, char *line)
 {
-	ft_printf("this is link: %s\n", line);
+	// if (valid_link(ants, line) == 1)
+		ft_printf("this is valid link: %s\n", line);
+	// else
+		// ft_error();
+}
+
+int			valid_link(t_ants *ants, char *line)
+{
+	t_ants	*temp;
+	t_ants	*temp2;
+	char	*link[3];
+	int		i;
+	int		flag;
+
+	temp = (t_ants*)malloc(sizeof(t_ants));
+	temp2 = (t_ants*)malloc(sizeof(t_ants));
+	temp = ants;
+	temp2 = ants;
+	flag = 0;
+	i = 0;
+	while (line[i] && line[i] != '-')
+		i++;
+	link[0] = ft_strndup(line, i);
+	link[1] = "-";
+	i++;
+	link[2] = ft_strdup(&line[i++]);
+	if (link[0] == link[2])
+		return (0);
+	ft_printf("I'm here\n");
+	ft_printf("%s\n", temp->rooms->name);
+	while (temp->rooms != NULL)
+	{
+		if (ft_strcmp(temp->rooms->name, link[0]))
+			flag = 1;
+		temp->rooms = temp->rooms->next;
+		ft_printf("%s\n", temp->rooms->name);
+	}
+	if (flag == 0)
+		return (0);
+	while (temp2->rooms != NULL)
+	{
+		if (ft_strcmp(temp->rooms->name, link[2]))
+			flag = 1;
+		temp->rooms = temp->rooms->next;
+	}
+	if (flag == 0)
+		return (0);
+	// ft_printf("array has: %s, %s, %s, ", link[0], link[1], link[2]);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 20:08:56 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 22:47:10 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int			main(void)
 	}
 	print_rooms(ants);
 	ft_solve(ants);
+	// while(1)
+	// 	;
 	return (0);
 }
 
@@ -54,7 +56,10 @@ int		read_file(t_ants *ants)
 			;
 		else
 			ft_error();
+		free(line);
 	}
+	if (line)
+		free(line);
 	return (0);
 }
 
