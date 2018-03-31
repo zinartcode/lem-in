@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 22:16:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 23:14:01 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int			is_link(char *line)
 
 void		add_link(t_ants *ants, char *line)
 {
-	// if (valid_link(ants, line) == 1)
+	if (valid_link(ants, line) == 1)
 		ft_printf("this is valid link: %s\n", line);
-	// else
-		// ft_error();
+	else
+		ft_error();
 }
 
 int			valid_link(t_ants *ants, char *line)
@@ -57,8 +57,8 @@ int			valid_link(t_ants *ants, char *line)
 	int		i;
 	int		flag;
 
-	temp = (t_ants*)malloc(sizeof(t_ants));
-	temp2 = (t_ants*)malloc(sizeof(t_ants));
+	// temp = (t_ants*)malloc(sizeof(t_ants));
+	// temp2 = (t_ants*)malloc(sizeof(t_ants));
 	temp = ants;
 	temp2 = ants;
 	flag = 0;

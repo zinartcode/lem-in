@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/03/30 22:49:47 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/03/30 23:17:21 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,9 @@ clean:
 	@make -C libft/ft_printf clean
 
 fclean: clean
-	@make -C libft clean
-	@make -C libft/ft_printf clean
+	# @make -C libft clean
+	@make -C $(dir $(LIBFT)) fclean
+	@make -C libft/ft_printf fclean
 	@/bin/$(RM) $(NAME)
 	@echo "$(RED)lem-in: deleting object files"
 
