@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 00:59:52 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 20:07:14 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ struct queue {
 typedef	struct			s_ants
 {
 	int					ant_count;
+	int					room_count;
+	int					flag;
 	struct s_room		*rooms;
 	struct s_link		*paths;
 }						t_ants;

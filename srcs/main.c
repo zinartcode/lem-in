@@ -6,11 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 01:03:06 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 20:08:56 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/lemin.h"
+#include "../includes/lemin.h"
 
 int			main(void)
 {
@@ -42,6 +42,10 @@ int		read_file(t_ants *ants)
 	ft_putchar('\n');
 	while (get_next_line(0, &line))
 	{
+		if (!ft_strcmp("##start", line))
+			ants->flag = 1;
+		else if (!ft_strcmp("##end", line))
+			ants->flag = 2;
 		if (is_room(line))
 			add_room(ants, line);
 		else if (is_link(line))
@@ -58,34 +62,4 @@ void	ft_error(void)
 {
 	ft_putstr_fd(RED"Error\n"NRM, 2);
 	exit(0);
-}
-
-void	init(t_ants *ants)
-{
-	ants->ant_count = 0;
-	ants->rooms = NULL;
-	ants->paths = NULL;
-}
-
-void	init_room(t_room *room)
-{
-	room->name = NULL;
-	room->is_start = 0;
-	room->is_end = 0;
-	room->position = 0;
-	room->visited = 0;
-	room->links = NULL;
-	room->next = NULL;
-}
-
-void	init_link(t_link *link)
-{
-	link->name = NULL;
-	link->seen = 0;
-	link->is_path = 0;
-	link->shortest = 0;
-	link->number_of_ant = 0;
-	link->len = 0;
-	link->path = NULL;
-	link->next = NULL;
 }
