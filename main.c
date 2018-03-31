@@ -6,11 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 22:47:10 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/31 00:06:15 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lemin.h"
+#include "lemin.h"
 
 int			main(void)
 {

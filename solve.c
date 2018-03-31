@@ -6,13 +6,13 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 21:35:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 19:44:25 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/30 23:59:01 by asarandi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lemin.h"
+#include "lemin.h"
 
 void	ft_solve (t_ants *ants)
 {
-	ft_printf("la la la.end");
+	ft_printf("ant count %d\n", ants->ant_count);
 }

@@ -6,11 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/30 23:14:01 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/31 02:03:46 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lemin.h"
+#include "lemin.h"
 
 int			is_link(char *line)
 {
@@ -51,17 +51,11 @@ void		add_link(t_ants *ants, char *line)
 
 int			valid_link(t_ants *ants, char *line)
 {
-	t_ants	*temp;
-	t_ants	*temp2;
+	t_room	*temp;
 	char	*link[3];
 	int		i;
 	int		flag;
 
-	// temp = (t_ants*)malloc(sizeof(t_ants));
-	// temp2 = (t_ants*)malloc(sizeof(t_ants));
-	temp = ants;
-	temp2 = ants;
-	flag = 0;
 	i = 0;
 	while (line[i] && line[i] != '-')
 		i++;
@@ -69,27 +63,29 @@ int			valid_link(t_ants *ants, char *line)
 	link[1] = "-";
 	i++;
 	link[2] = ft_strdup(&line[i++]);
-	if (link[0] == link[2])
+	if (ft_strcmp(link[0],link[2]) == 0)
 		return (0);
-	ft_printf("I'm here\n");
-	ft_printf("%s\n", temp->rooms->name);
-	while (temp->rooms != NULL)
+	temp = ants->rooms;
+	flag = 0;
+	while (temp != NULL)
 	{
-		if (ft_strcmp(temp->rooms->name, link[0]))
+		if (ft_strcmp(temp->name, link[0]) == 0)
+		{
 			flag = 1;
-		temp->rooms = temp->rooms->next;
-		ft_printf("%s\n", temp->rooms->name);
+			break;
+		}
+		temp = temp->next;
 	}
+
 	if (flag == 0)
 		return (0);
-	while (temp2->rooms != NULL)
+
+	temp = ants->rooms;
+	while (temp != NULL)
 	{
-		if (ft_strcmp(temp->rooms->name, link[2]))
-			flag = 1;
-		temp->rooms = temp->rooms->next;
+		if (ft_strcmp(temp->name, link[2]) == 0)
+			return (1);
+		temp = temp->next;
 	}
-	if (flag == 0)
-		return (0);
-	// ft_printf("array has: %s, %s, %s, ", link[0], link[1], link[2]);
-	return (1);
+	return (0);
 }
