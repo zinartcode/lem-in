@@ -24,6 +24,7 @@ int			main(void)
 		return (0);
 	}
 	print_rooms(ants);
+	print_links(ants);
 	ft_solve(ants);
 	// while(1)
 	// 	;

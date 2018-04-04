@@ -27,6 +27,7 @@ void	init_room(t_room *room)
 	room->is_start = 0;
 	room->is_end = 0;
 	room->position = 0;
+	room->number_of_ant = 0;
 	room->visited = 0;
 	room->links = NULL;
 	room->next = NULL;
@@ -34,11 +35,11 @@ void	init_room(t_room *room)
 
 void	init_link(t_link *link)
 {
-	link->name = NULL;
+	link->name1 = NULL;
+	link->name2 = NULL;
 	link->seen = 0;
 	link->is_path = 0;
 	link->shortest = 0;
-	link->number_of_ant = 0;
 	link->len = 0;
 	link->path = NULL;
 	link->next = NULL;

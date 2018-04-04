@@ -35,28 +35,29 @@ typedef	struct			s_ants
 	struct s_link		*paths;
 }						t_ants;
 
-typedef struct			s_link
-{
-	char				*name;
-	int					seen;
-	int					is_path;
-	int					shortest;
-	int					number_of_ant;
-	int					len;
-	struct s_link		*path;
-	struct s_link		*next;
-}						t_link;
-
 typedef	struct			s_room
 {
 	char				*name;
 	int					is_start;
 	int					is_end;
+	int					number_of_ant;
 	int					position;
 	int					visited;
-	struct s_links		*links;
+	struct s_link		*links;
 	struct s_room		*next;
 }						t_room;
+
+typedef struct			s_link
+{
+	char				*name1;
+	char				*name2;
+	int					seen;
+	int					is_path;
+	int					shortest;
+	int					len;
+	struct s_link		*path;
+	struct s_link		*next;
+}						t_link;
 
 void					init(t_ants *ants);
 void					init_room(t_room *room);
@@ -72,3 +73,4 @@ void					add_room(t_ants *ants, char *line);
 void					add_link(t_ants *ants, char *line);
 
 void					print_rooms(t_ants *ants);
+void					print_links(t_ants *ants);

@@ -41,10 +41,54 @@ int			is_link(char *line)
 	return (0);
 }
 
+// void		add_link(t_ants *ants, char *line)
+// {
+// 	if (valid_link(ants, line) == 1)
+// 	{
+// 		char **link;
+// 		t_room *temp;
+// 		t_link *new;
+// 		char matrix[ants->room_count][ants->room_count];
+
+// 		link = ft_strsplit(line, '-');
+// 		temp = ants->rooms;
+// 		while (temp->next != NULL)
+// 		{
+// 			if (ft_strcmp(link[0], temp->name) == 0)
+// 			{
+// 				new = (t_link *)malloc(sizeof(t_link));
+// 				new->name1 = ft_strdup(link[0]);
+// 				new->name2 = ft_strdup(link[1]);
+// 			}
+// 			temp = temp->next;
+// 		}
+// 		ft_printf("this is valid link: %s, %s\n", link[0], link[1]);
+// 	}
+// 	else
+// 		ft_error();
+// }
+
 void		add_link(t_ants *ants, char *line)
 {
 	if (valid_link(ants, line) == 1)
-		ft_printf("this is valid link: %s\n", line);
+	{
+		char **link;
+		t_room *temp;
+		t_link *new;
+		char matrix[ants->room_count][ants->room_count];
+
+		link = ft_strsplit(line, '-');
+		temp = ants->rooms;
+		while (temp->next != NULL)
+		{
+			if (ft_strcmp(link[0], temp->name) == 0)
+			{
+				matrix[temp->position][]
+			}
+			temp = temp->next;
+		}
+		ft_printf("this is valid link: %s, %s\n", link[0], link[1]);
+	}
 	else
 		ft_error();
 }
@@ -52,7 +96,7 @@ void		add_link(t_ants *ants, char *line)
 int			valid_link(t_ants *ants, char *line)
 {
 	t_room	*temp;
-	char	*link[3];
+	char	*link[2];
 	int		i;
 	int		flag;
 
@@ -60,10 +104,9 @@ int			valid_link(t_ants *ants, char *line)
 	while (line[i] && line[i] != '-')
 		i++;
 	link[0] = ft_strndup(line, i);
-	link[1] = "-";
 	i++;
-	link[2] = ft_strdup(&line[i++]);
-	if (ft_strcmp(link[0],link[2]) == 0)
+	link[1] = ft_strdup(&line[i++]);
+	if (ft_strcmp(link[0],link[1]) == 0)
 		return (0);
 	temp = ants->rooms;
 	flag = 0;
@@ -76,16 +119,30 @@ int			valid_link(t_ants *ants, char *line)
 		}
 		temp = temp->next;
 	}
-
 	if (flag == 0)
 		return (0);
-
 	temp = ants->rooms;
 	while (temp != NULL)
 	{
-		if (ft_strcmp(temp->name, link[2]) == 0)
+		if (ft_strcmp(temp->name, link[1]) == 0)
 			return (1);
 		temp = temp->next;
 	}
 	return (0);
 }
+
+void	print_links(t_ants *ants)
+{
+	struct s_link	*temp;
+
+	temp = ants->rooms->links;
+	while (temp != NULL)
+	{
+		while (temp != NULL)
+		{
+			ft_printf("Link is: %s, %s\n", temp->name1, temp->name2);
+			temp = temp->next;
+		}
+	}
+}
+
