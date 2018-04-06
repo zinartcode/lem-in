@@ -26,27 +26,6 @@ struct queue {
     int rear;
 }		t_queue;
 
-typedef	struct			s_ants
-{
-	int					ant_count;
-	int					room_count;
-	int					flag;
-	struct s_room		*rooms;
-	struct s_link		*paths;
-}						t_ants;
-
-typedef	struct			s_room
-{
-	char				*name;
-	int					is_start;
-	int					is_end;
-	int					number_of_ant;
-	int					position;
-	int					visited;
-	struct s_link		*links;
-	struct s_room		*next;
-}						t_room;
-
 typedef struct			s_link
 {
 	char				*name1;
@@ -58,6 +37,27 @@ typedef struct			s_link
 	struct s_link		*path;
 	struct s_link		*next;
 }						t_link;
+
+typedef	struct			s_room
+{
+	char				*name;
+	int					is_start;
+	int					is_end;
+	int					number_of_ant;
+	int					position;
+	int					visited;
+	t_link				*links;
+	struct s_room		*next;
+}						t_room;
+
+typedef	struct			s_ants
+{
+	int					ant_count;
+	int					room_count;
+	int					flag;
+	t_room				*rooms;
+	t_link				*paths;
+}						t_ants;
 
 void					init(t_ants *ants);
 void					init_room(t_room *room);
@@ -71,6 +71,8 @@ int						valid_link(t_ants *ants, char *line);
 int						is_comment(char *line);
 void					add_room(t_ants *ants, char *line);
 void					add_link(t_ants *ants, char *line);
+int						same_link(t_ants *ants, t_link *new);
+void					link_to_room(t_ants *ants, t_link *new);
 
 void					print_rooms(t_ants *ants);
 void					print_links(t_ants *ants);
