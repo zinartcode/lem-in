@@ -59,7 +59,7 @@ void		add_link(t_ants *ants, char *line)
 				new = (t_link *)malloc(sizeof(t_link));
 				new->name1 = ft_strdup(link[0]);
 				new->name2 = ft_strdup(link[1]);
-				link_to_room(ants, new);
+				link_to_room(temp, new);
 			}
 			temp = temp->next;
 		}
@@ -69,14 +69,20 @@ void		add_link(t_ants *ants, char *line)
 		ft_error();
 }
 
-void	link_to_room(t_ants *ants, t_link *new)
+void	link_to_room(t_room *temp, t_link *new)
 {
 	t_link	*add;
-	if (ants->rooms->links == NULL)
-		ants->rooms->links = new;
-	else if (same_link(ants, new) != 1)
+	// t_room	*temp;
+
+	// temp = (t_room *)malloc(sizeof(t_room));
+	// init_room(temp);
+	// temp = room;
+
+	if (temp->links == NULL)
+		temp->links = new;
+	else if (same_link(temp, new) != 1)
 	{
-		add = ants->rooms->links;
+		add = temp->links;
 		while (add->next != NULL)
 			add = add->next;
 		add->next = new;
@@ -85,13 +91,14 @@ void	link_to_room(t_ants *ants, t_link *new)
 		ft_error();
 }
 
-int		same_link(t_ants *ants, t_link *new)
+int		same_link(t_room *room, t_link *new)
 {
 	t_link	*temp;
 	int		room1;
 	int		room2;
 
-	temp = ants->rooms->links;
+	temp = room->links;
+
 	while (temp)
 	{
 		room1 = 0;
@@ -152,10 +159,11 @@ void	print_links(t_ants *ants)
 	t_link	*temp;
 	t_room	*temp_room;
 
-	temp = ants->rooms->links;
+	// temp = ants->rooms->links;
 	temp_room = ants->rooms;
 	while (temp_room != NULL)
 	{
+		temp = temp_room->links;
 		ft_printf("I'm in room %s\n", temp_room->name);
 		while (temp != NULL)
 		{
