@@ -59,6 +59,15 @@ void		add_link(t_ants *ants, char *line)
 				new->name1 = ft_strdup(link[0]);
 				new->name2 = ft_strdup(link[1]);
 				link_to_room(temp, new);
+				// link_to_room2(temp, new);
+			}
+			else if (ft_strcmp(link[1], temp->name) == 0)
+			{
+				new = (t_link *)malloc(sizeof(t_link));
+				new->name1 = ft_strdup(link[1]);
+				new->name2 = ft_strdup(link[0]);
+				link_to_room(temp, new);
+				// link_to_room2(temp, new);
 			}
 			temp = temp->next;
 		}
@@ -85,6 +94,26 @@ void	link_to_room(t_room *temp, t_link *new)
 		ft_error();
 }
 
+void	link_to_room2(t_room *temp, t_link *new)
+{
+	t_link	*add;
+	char	*swap;
+
+	swap = ft_strdup(new->name1);
+	new->name1 = ft_strdup(new->name2);
+	new->name2 = ft_strdup(swap);
+	free(swap);
+	if (same_link(temp, new) != 1)
+	{
+		add = temp->links;
+		while (add->next != NULL)
+			add = add->next;
+		add->next = new;
+	}
+	else
+		ft_error();
+}
+
 int		same_link(t_room *room, t_link *new)
 {
 	t_link	*temp;
@@ -99,9 +128,9 @@ int		same_link(t_room *room, t_link *new)
 		room2 = 0;
 		// ft_printf("in new: %s, %s\n", new->name1, new->name2);
 		// ft_printf("in same link: %s, %s\n", temp->name1, temp->name2);
-		if (ft_strcmp(new->name1, temp->name1) == 0 || ft_strcmp(new->name1, temp->name2) == 0)
+		if (ft_strcmp(new->name1, temp->name1) == 0) // || ft_strcmp(new->name1, temp->name2) == 0)
 			room1 = 1;
-		if (ft_strcmp(new->name2, temp->name2) == 0 || ft_strcmp(new->name2, temp->name1) == 0)
+		if (ft_strcmp(new->name2, temp->name2) == 0) // || ft_strcmp(new->name2, temp->name1) == 0)
 			room2 = 1;
 		if (room1 == 1 && room2 == 1)
 		return (1);

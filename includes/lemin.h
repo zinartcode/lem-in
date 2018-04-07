@@ -73,6 +73,7 @@ void					add_room(t_ants *ants, char *line);
 void					add_link(t_ants *ants, char *line);
 int						same_link(t_room *room, t_link *new);
 void					link_to_room(t_room *temp, t_link *new);
+void					link_to_room2(t_room *temp, t_link *new);
 
 void					print_rooms(t_ants *ants);
 void					print_links(t_ants *ants);
