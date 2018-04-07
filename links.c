@@ -48,7 +48,6 @@ void		add_link(t_ants *ants, char *line)
 		char **link;
 		t_room *temp;
 		t_link *new;
-		// char matrix[ants->room_count][ants->room_count];
 
 		link = ft_strsplit(line, '-');
 		temp = ants->rooms;
@@ -72,11 +71,6 @@ void		add_link(t_ants *ants, char *line)
 void	link_to_room(t_room *temp, t_link *new)
 {
 	t_link	*add;
-	// t_room	*temp;
-
-	// temp = (t_room *)malloc(sizeof(t_room));
-	// init_room(temp);
-	// temp = room;
 
 	if (temp->links == NULL)
 		temp->links = new;
@@ -103,8 +97,8 @@ int		same_link(t_room *room, t_link *new)
 	{
 		room1 = 0;
 		room2 = 0;
-		ft_printf("in new: %s, %s\n", new->name1, new->name2);
-		ft_printf("in same link: %s, %s\n", temp->name1, temp->name2);
+		// ft_printf("in new: %s, %s\n", new->name1, new->name2);
+		// ft_printf("in same link: %s, %s\n", temp->name1, temp->name2);
 		if (ft_strcmp(new->name1, temp->name1) == 0 || ft_strcmp(new->name1, temp->name2) == 0)
 			room1 = 1;
 		if (ft_strcmp(new->name2, temp->name2) == 0 || ft_strcmp(new->name2, temp->name1) == 0)
