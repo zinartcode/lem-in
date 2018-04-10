@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/03/31 02:01:09 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/04/09 19:44:10 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC =	main.c \
 		rooms.c \
 		links.c \
 		init_free.c \
+		free_all.c \
 
 LIBFT = libft/libft.a
 FT_PRINTF = libft/ft_printf/libftprintf.a
@@ -57,8 +58,8 @@ clean:
 	@make -C libft/ft_printf clean
 
 fclean: clean
-	@make -C $(dir $(LIBFT)) fclean
-	@make -C libft/ft_printf fclean
+	# @make -C $(dir $(LIBFT)) fclean
+	# @make -C libft/ft_printf fclean
 	@/bin/$(RM) $(NAME)
 	@echo "$(RED)lem-in: deleting object files"
 

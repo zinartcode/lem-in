@@ -19,6 +19,7 @@ void	init(t_ants *ants)
 	ants->flag = 0;
 	ants->rooms = NULL;
 	ants->paths = NULL;
+	ants->temp_path = NULL;
 }
 
 void	init_room(t_room *room)
@@ -30,6 +31,8 @@ void	init_room(t_room *room)
 	room->number_of_ant = 0;
 	room->visited = 0;
 	room->links = NULL;
+	room->parent = NULL;
+	room->prev = NULL;
 	room->next = NULL;
 }
 

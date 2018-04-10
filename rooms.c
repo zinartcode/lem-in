@@ -47,6 +47,7 @@ void	add_room(t_ants *ants, char *line)
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
+		new->prev = temp;
 	}
 	ants->flag = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/31 02:03:46 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/09 19:47:03 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,23 @@ void		add_link(t_ants *ants, char *line)
 			if (ft_strcmp(link[0], temp->name) == 0)
 			{
 				new = (t_link *)malloc(sizeof(t_link));
+				init_link(new);
 				new->name1 = ft_strdup(link[0]);
 				new->name2 = ft_strdup(link[1]);
 				link_to_room(temp, new);
-				// link_to_room2(temp, new);
 			}
 			else if (ft_strcmp(link[1], temp->name) == 0)
 			{
 				new = (t_link *)malloc(sizeof(t_link));
+				init_link(new);
 				new->name1 = ft_strdup(link[1]);
 				new->name2 = ft_strdup(link[0]);
 				link_to_room(temp, new);
-				// link_to_room2(temp, new);
 			}
 			temp = temp->next;
 		}
-		// ft_printf("this is valid link: %s, %s\n", link[0], link[1]);
+		free(link[0]);
+		free(link[1]);
 	}
 	else
 		ft_error();
@@ -94,26 +95,6 @@ void	link_to_room(t_room *temp, t_link *new)
 		ft_error();
 }
 
-void	link_to_room2(t_room *temp, t_link *new)
-{
-	t_link	*add;
-	char	*swap;
-
-	swap = ft_strdup(new->name1);
-	new->name1 = ft_strdup(new->name2);
-	new->name2 = ft_strdup(swap);
-	free(swap);
-	if (same_link(temp, new) != 1)
-	{
-		add = temp->links;
-		while (add->next != NULL)
-			add = add->next;
-		add->next = new;
-	}
-	else
-		ft_error();
-}
-
 int		same_link(t_room *room, t_link *new)
 {
 	t_link	*temp;
@@ -122,7 +103,7 @@ int		same_link(t_room *room, t_link *new)
 
 	temp = room->links;
 
-	while (temp)
+	while (temp && new)
 	{
 		room1 = 0;
 		room2 = 0;
@@ -186,7 +167,7 @@ void	print_links(t_ants *ants)
 	while (temp_room != NULL)
 	{
 		temp = temp_room->links;
-		ft_printf("I'm in room %s\n", temp_room->name);
+		ft_printf(RED"I'm in room %s\n"NRM, temp_room->name);
 		while (temp != NULL)
 		{
 			ft_printf("Link is: %s, %s\n", temp->name1, temp->name2);

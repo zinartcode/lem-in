@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/31 01:53:55 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/09 21:35:16 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef	struct			s_room
 	int					position;
 	int					visited;
 	t_link				*links;
+	struct s_room		*parent;
+	struct s_room		*prev;
 	struct s_room		*next;
 }						t_room;
 
@@ -57,13 +59,18 @@ typedef	struct			s_ants
 	int					flag;
 	t_room				*rooms;
 	t_link				*paths;
+	t_link				*temp_path;
 }						t_ants;
 
 void					init(t_ants *ants);
 void					init_room(t_room *room);
 void					init_link(t_link *link);
+void					free_all(t_ants *ants);
+void					free_rooms(t_room *rooms);
+void					delete_links(t_link *links);
 int						read_file(t_ants *ants);
 void					ft_solve (t_ants *ants);
+void					find_path(t_ants *ants);
 void					ft_error(void);
 int						is_room(char *line);
 int						is_link(char *line);
@@ -73,7 +80,10 @@ void					add_room(t_ants *ants, char *line);
 void					add_link(t_ants *ants, char *line);
 int						same_link(t_room *room, t_link *new);
 void					link_to_room(t_room *temp, t_link *new);
-void					link_to_room2(t_room *temp, t_link *new);
+
+t_room					*start_move(t_room *room);
+t_room					*end_move(t_room *room);
+t_room					*last_room(t_room *room);
 
 void					print_rooms(t_ants *ants);
 void					print_links(t_ants *ants);
