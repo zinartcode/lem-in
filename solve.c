@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 21:35:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 21:36:11 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/09 23:51:15 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,37 @@ void	ft_solve (t_ants *ants)
 
 void	find_path(t_ants *ants)
 {
-	ft_printf("I'm searching path yo %s\n", ants->rooms->name);
-}
-
-t_room	*start_move(t_room *room)
-{
-	t_room	*start;
-	t_room	*temp;
-
-	temp = room;
-	start = (t_room *)malloc(sizeof(t_room));
-	init_room(start);
-	while (temp->is_start != 1)
-		temp = temp->next;
-	start = temp;
-	temp->prev->next = temp->next;
-	temp = room;
-	start->next = room;
-	return (start);
-}
-
-t_room	*end_move(t_room *room)
-{
-	t_room	*end;
-	t_room	*temp;
+	t_room	*room;
 	t_room	*head;
+	char 	*end;
 
-	head = room;
-	temp = room;
-	end = (t_room *)malloc(sizeof(t_room));
-	init_room(end);
-	while (temp->is_end != 1)
-		temp = temp->next;
-	end = temp;
-	ft_printf("End room is: %s\n", end->name);
-	temp->prev->next = temp->next;
-	while (temp->next != NULL)
-		temp = temp->next;
-	temp->next = end;
-	end->prev = temp;
-	end->next = NULL;
-	return (head);
+	room = ants->rooms;
+	head = ants->rooms;
+	room->visited = 1;
+	ft_printf("Start: %s -> ", room->name);
+	while (room->is_end != 1)
+		room = room->next;
+	end = ft_strdup(room->name);
+		room = head;
+		while (ft_strcmp(end, room->links->name2) != 0)
+		{
+			while (room->links && room->links->seen == 0)
+			{
+				ft_printf("%s -> ", room->links->name2);
+				room->links->seen = 1;
+				room->links = room->links->next;
+			}
+			room = room->next;
+			// ft_printf("%s -> ", room->name);
+			// room->links->seen = 1;
+			// room->links = room->links->next;
+			// room->visited = 1;
+			// while (room->visited != 0)
+			// 	room = room->next;
+			// room->links->seen = 1;
+			// ft_printf("visited: %s\n", room->name);
+		}
+		// ft_printf("%s -> ", room->next->name);
 }
 
-t_room	*last_room(t_room *room)
-{
-	t_room	*temp;
-	temp = room;
-	while (temp->next != NULL)
-		temp = temp->next;
-	return (temp);
-}
+
