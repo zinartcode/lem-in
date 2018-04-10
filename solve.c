@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 21:35:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 23:51:15 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/09 23:58:05 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	ft_solve (t_ants *ants)
 	temp = last_room(ants->rooms);
 	if (temp->is_end != 1)
 		ants->rooms = end_move(ants->rooms);
+	print_rooms(ants);  //test
+	print_links(ants);  //test
 	find_path(ants);
 }
 
@@ -55,12 +57,10 @@ void	find_path(t_ants *ants)
 		room = head;
 		while (ft_strcmp(end, room->links->name2) != 0)
 		{
-			while (room->links && room->links->seen == 0)
-			{
-				ft_printf("%s -> ", room->links->name2);
-				room->links->seen = 1;
+			while (room->links && room->links->seen != 0)
 				room->links = room->links->next;
-			}
+			ft_printf("%s -> ", room->links->name2);
+			room->links->seen = 1;
 			room = room->next;
 			// ft_printf("%s -> ", room->name);
 			// room->links->seen = 1;
