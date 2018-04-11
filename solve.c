@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 21:35:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 21:09:32 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 22:01:08 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		count_links(t_room *room)
 {
-	struct s_link *ptr;
+	t_link *ptr;
 	int		i;
 
 	i = 0;
@@ -31,7 +31,7 @@ void	create_links(t_room *room)
 {
 	int count;
 	int i;
-	struct s_link *ptr;
+	t_link *ptr;
 
 	count = count_links(room);
 	room->nodes = ft_memalloc((count + 1) * sizeof(struct s_room *));
@@ -44,32 +44,22 @@ void	create_links(t_room *room)
 		i++;
 	}
 	room->nodes[i] = NULL;
-	i = 0;
-	while (room->nodes[i])
-	{
-		printf("room link #%d, name = %s\n", i, room->nodes[i]->name);
-		i++;
-	}
-	return ;
 }
 
 void	find_paths(t_room *root)
 {
+	t_room	*ptr;
+	t_room	*original;
+	int		i;
 
-	struct s_room *ptr;
-	struct s_room *original;
-
+	i = 0;
 	original = root;
 	ptr = root;
-
 	while (ptr)
 	{
-		printf("root is %s\n", ptr->name);
 		create_links(ptr);
 		ptr = ptr->next;
 	}
-
-	int i = 0;
 	ptr = root;
 	while (ptr)
 	{
@@ -78,6 +68,13 @@ void	find_paths(t_room *root)
 		ptr = ptr->next;
 	}
 	all_rooms[i] = NULL;
+	find_paths_2(root, ptr);
+}
+
+
+void	find_paths_2(t_room *root, t_room *ptr)
+{
+	int	i;
 
 	i = 0;
 	while (all_rooms[i] != NULL)
@@ -86,12 +83,6 @@ void	find_paths(t_room *root)
 		all_rooms[i]->prev = NULL;
 		i++;
 	}
-
-
-
-
-
-	ptr = root;
 	ptr = root;
 	while (root)
 	{
@@ -99,7 +90,6 @@ void	find_paths(t_room *root)
 		i = 0;
 		while (root->nodes[i] != NULL)
 		{
-//			root->nodes[i]->next = NULL;
 			if (root->nodes[i]->visited == 0)
 			{
 				root->nodes[i]->visited = 1;
@@ -110,20 +100,19 @@ void	find_paths(t_room *root)
 			i++;
 		}
 		root = root->next;
-
 	}
+	store_path(ptr);
+}
 
-	root = original;
-	while (root)
-	{
-		printf("room name = %s\n", root->name);
-		root = root->next;
-	}
+void			store_path(t_room *room)
+{
+	t_room		*ptr;
+	t_room		*finish;
+	t_room		*start;
+	int			i;
 
-
+	ptr = room;
 	i = 0;
-	struct s_room *finish;
-	struct s_room *start;
 
 	while (all_rooms[i] != NULL)
 	{
@@ -176,7 +165,7 @@ void	ft_solve (t_ants *ants)
 	temp = last_room(ants->rooms);
 	if (temp->is_end != 1)
 		ants->rooms = end_move(ants->rooms);
-	print_rooms(ants);  //test
-	print_links(ants);  //test
+	// print_rooms(ants);  //test
+	// print_links(ants);  //test
 	find_paths(ants->rooms);
 }
