@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 21:35:16 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 17:30:20 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct			s_link
 	int					is_path;
 	int					shortest;
 	int					len;
+	struct s_room		*parent;
 	struct s_link		*path;
 	struct s_link		*next;
 }						t_link;
@@ -47,7 +48,6 @@ typedef	struct			s_room
 	int					position;
 	int					visited;
 	t_link				*links;
-	struct s_room		*parent;
 	struct s_room		*prev;
 	struct s_room		*next;
 }						t_room;
@@ -81,6 +81,7 @@ void					add_link(t_ants *ants, char *line);
 int						same_link(t_room *room, t_link *new);
 void					link_to_room(t_room *temp, t_link *new);
 
+t_room					*find_room(t_room *room, char *name);
 t_room					*start_move(t_room *room);
 t_room					*end_move(t_room *room);
 t_room					*last_room(t_room *room);

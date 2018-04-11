@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/03/31 02:02:26 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 17:29:55 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ void	print_rooms(t_ants *ants)
 		ft_putchar('\n');
 		temp = temp->next;
 	}
+}
+
+t_room	*find_room(t_room *room, char *name)
+{
+	t_room *temp;
+
+	temp = room;
+	while (ft_strcmp(temp->name, name) != 0)
+		temp = temp->next;
+	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 19:43:55 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 22:28:55 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 17:20:43 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_room(t_room *room)
 	room->number_of_ant = 0;
 	room->visited = 0;
 	room->links = NULL;
-	room->parent = NULL;
 	room->prev = NULL;
 	room->next = NULL;
 }
@@ -44,6 +43,7 @@ void	init_link(t_link *link)
 	link->is_path = 0;
 	link->shortest = 0;
 	link->len = 0;
+	link->parent = NULL;
 	link->path = NULL;
 	link->next = NULL;
 }

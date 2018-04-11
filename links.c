@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 19:47:03 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 17:36:09 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		add_link(t_ants *ants, char *line)
 				init_link(new);
 				new->name1 = ft_strdup(link[0]);
 				new->name2 = ft_strdup(link[1]);
+				new->parent = find_room(ants->rooms, link[1]);
 				link_to_room(temp, new);
 			}
 			else if (ft_strcmp(link[1], temp->name) == 0)
@@ -67,6 +68,7 @@ void		add_link(t_ants *ants, char *line)
 				init_link(new);
 				new->name1 = ft_strdup(link[1]);
 				new->name2 = ft_strdup(link[0]);
+				new->parent = find_room(ants->rooms, link[0]);
 				link_to_room(temp, new);
 			}
 			temp = temp->next;
@@ -170,7 +172,8 @@ void	print_links(t_ants *ants)
 		ft_printf(RED"I'm in room %s\n"NRM, temp_room->name);
 		while (temp != NULL)
 		{
-			ft_printf("Link is: %s, %s\n", temp->name1, temp->name2);
+			// ft_printf("Link is: %s, %s\n", temp->name1, temp->name2);
+			ft_printf("Path to room: %s\n", temp->parent->name);
 			temp = temp->next;
 		}
 		temp_room = temp_room->next;
