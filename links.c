@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 17:36:09 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 20:58:35 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ void	link_to_room(t_room *temp, t_link *new)
 			add = add->next;
 		add->next = new;
 	}
-	else
-		ft_error();
 }
 
 int		same_link(t_room *room, t_link *new)
@@ -109,11 +107,9 @@ int		same_link(t_room *room, t_link *new)
 	{
 		room1 = 0;
 		room2 = 0;
-		// ft_printf("in new: %s, %s\n", new->name1, new->name2);
-		// ft_printf("in same link: %s, %s\n", temp->name1, temp->name2);
-		if (ft_strcmp(new->name1, temp->name1) == 0) // || ft_strcmp(new->name1, temp->name2) == 0)
+		if (ft_strcmp(new->name1, temp->name1) == 0)
 			room1 = 1;
-		if (ft_strcmp(new->name2, temp->name2) == 0) // || ft_strcmp(new->name2, temp->name1) == 0)
+		if (ft_strcmp(new->name2, temp->name2) == 0)
 			room2 = 1;
 		if (room1 == 1 && room2 == 1)
 		return (1);
@@ -172,7 +168,6 @@ void	print_links(t_ants *ants)
 		ft_printf(RED"I'm in room %s\n"NRM, temp_room->name);
 		while (temp != NULL)
 		{
-			// ft_printf("Link is: %s, %s\n", temp->name1, temp->name2);
 			ft_printf("Path to room: %s\n", temp->parent->name);
 			temp = temp->next;
 		}

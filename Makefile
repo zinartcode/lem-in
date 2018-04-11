@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/04/09 22:31:03 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/04/10 21:00:03 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,14 +52,23 @@ $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(LIB) $(OB1) -o $(NAME)
 	@echo "$(GREEN)lem-in: creating object files"
 
+rmbin:
+	rm -rf $(NAME)
+
+rmobj:
+	rm -rf *.o
+
+again: rmbin rmobj all
+	
+
 clean:
 	@/bin/$(RM) $(OB1)
 	@make -C libft clean
 	@make -C libft/ft_printf clean
 
 fclean: clean
-	# @make -C $(dir $(LIBFT)) fclean
-	# @make -C libft/ft_printf fclean
+	@make -C $(dir $(LIBFT)) fclean
+	@make -C libft/ft_printf fclean
 	@/bin/$(RM) $(NAME)
 	@echo "$(RED)lem-in: deleting object files"
 

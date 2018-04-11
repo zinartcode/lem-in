@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 17:30:20 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 21:05:55 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ typedef struct			s_link
 	struct s_link		*next;
 }						t_link;
 
+
+
+
+
+
 typedef	struct			s_room
 {
 	char				*name;
@@ -47,10 +52,14 @@ typedef	struct			s_room
 	int					number_of_ant;
 	int					position;
 	int					visited;
+	int					in_queue;
 	t_link				*links;
+	struct s_room		**nodes;
 	struct s_room		*prev;
 	struct s_room		*next;
 }						t_room;
+
+struct	s_room	**all_rooms;
 
 typedef	struct			s_ants
 {
@@ -70,14 +79,16 @@ void					free_rooms(t_room *rooms);
 void					delete_links(t_link *links);
 int						read_file(t_ants *ants);
 void					ft_solve (t_ants *ants);
-void					find_path(t_ants *ants);
+void					find_path(t_room *root);
 void					ft_error(void);
 int						is_room(char *line);
 int						is_link(char *line);
+int						count_links(t_room *room);
 int						valid_link(t_ants *ants, char *line);
 int						is_comment(char *line);
 void					add_room(t_ants *ants, char *line);
 void					add_link(t_ants *ants, char *line);
+void					create_links(t_room *room);
 int						same_link(t_room *room, t_link *new);
 void					link_to_room(t_room *temp, t_link *new);
 
