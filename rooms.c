@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 17:29:55 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 23:20:26 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int		is_comment(char *line)
 }
 
 
-void	print_rooms(t_ants *ants)
+void	print_rooms(t_room *room)
 {
 	t_room		*temp;
-	temp = ants->rooms;
+	temp = room;
 	while (temp != NULL)
 	{
 		ft_printf("here is the room: %s, it's position %d ", temp->name, temp->position);

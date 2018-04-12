@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 21:59:30 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 23:35:15 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef	struct			s_ants
 	int					room_count;
 	int					flag;
 	t_room				*rooms;
-	t_link				*paths;
+	t_room				**paths;
 	t_link				*temp_path;
 }						t_ants;
 
@@ -92,9 +92,10 @@ t_room					*start_move(t_room *room);
 t_room					*end_move(t_room *room);
 t_room					*last_room(t_room *room);
 
-void					find_paths(t_room *root);
-void					find_paths_2(t_room *root, t_room *ptr);
-void					store_path(t_room *room);
+t_room					*reverse_path(t_room **room);
+void					find_paths(t_ants *ants, t_room *root);
+void					find_paths_2(t_ants *ants, t_room *root, t_room *ptr);
+void					store_path(t_ants *ants, t_room *room);
 
-void					print_rooms(t_ants *ants);
+void					print_rooms(t_room *room);
 void					print_links(t_ants *ants);

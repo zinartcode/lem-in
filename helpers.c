@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 22:29:16 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/09 22:29:50 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/10 22:17:25 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_room	*end_move(t_room *room)
 	while (temp->is_end != 1)
 		temp = temp->next;
 	end = temp;
-	ft_printf("End room is: %s\n", end->name);
 	temp->prev->next = temp->next;
 	while (temp->next != NULL)
 		temp = temp->next;
