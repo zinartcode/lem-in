@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 23:20:26 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/12 00:13:27 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,24 @@ int		is_room(char *line)
 	else if ((ft_space(line)) == 2)
 		return (1);
 	return (0);
+}
+
+int		is_comment(char *line)
+{
+	if (line[0] == '#' || line[0] == 'L')
+		return (1);
+	else
+		return (0);
+}
+
+t_room	*find_room(t_room *room, char *name)
+{
+	t_room *temp;
+
+	temp = room;
+	while (ft_strcmp(temp->name, name) != 0)
+		temp = temp->next;
+	return (temp);
 }
 
 void	add_room(t_ants *ants, char *line)
@@ -52,15 +70,6 @@ void	add_room(t_ants *ants, char *line)
 	ants->flag = 0;
 }
 
-int		is_comment(char *line)
-{
-	if (line[0] == '#' || line[0] == 'L')
-		return (1);
-	else
-		return (0);
-}
-
-
 void	print_rooms(t_room *room)
 {
 	t_room		*temp;
@@ -75,14 +84,4 @@ void	print_rooms(t_room *room)
 		ft_putchar('\n');
 		temp = temp->next;
 	}
-}
-
-t_room	*find_room(t_room *room, char *name)
-{
-	t_room *temp;
-
-	temp = room;
-	while (ft_strcmp(temp->name, name) != 0)
-		temp = temp->next;
-	return (temp);
 }
