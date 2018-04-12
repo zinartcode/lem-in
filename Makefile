@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/04/10 21:00:03 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/04/11 23:05:50 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ SRC =	main.c \
 		links.c \
 		init_free.c \
 		helpers.c \
+		path_helper.c \
+		path_finder.c \
 
 LIBFT = libft/libft.a
 FT_PRINTF = libft/ft_printf/libftprintf.a

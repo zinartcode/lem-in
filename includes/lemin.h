@@ -92,10 +92,11 @@ t_room					*start_move(t_room *room);
 t_room					*end_move(t_room *room);
 t_room					*last_room(t_room *room);
 
-t_room					*reverse_path(t_room **room);
+void					clean_rooms(t_room	**all_rooms);
 void					find_paths(t_ants *ants, t_room *root);
 void					find_paths_2(t_ants *ants, t_room *root, t_room *ptr);
 void					store_path(t_ants *ants, t_room *room);
+void					store_path_2(t_ants *ants, t_room *room, int i);
 
 void					print_rooms(t_room *room);
 void					print_links(t_ants *ants);
