@@ -111,10 +111,10 @@ void	store_path_2(t_ants *ants, t_room *room, int i)
 	temp[i] = ptr;
 	ants->paths = temp;
 	i = 0;
-	while (temp[i] != NULL)
-	{
-		printf("%s\n", temp[i]->name);
-		i++;
-	}
+	// while (temp[i] != NULL)
+	// {
+	// 	printf("%s\n", temp[i]->name);
+	// 	i++;
+	// }
 	return ;	
 }

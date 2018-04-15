@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/12 00:19:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/12 23:53:58 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ void					store_path(t_ants *ants, t_room *room);
 void					store_path_2(t_ants *ants, t_room *room, int i);
 
 void					move_ants(t_ants *ants);
+void					print_moves(t_room **room, int i);
+void					check_ants(t_room *room, int i);
+void					print_ant(int ant, char *room);
 
 void					print_rooms(t_room *room);
 void					print_links(t_ants *ants);
