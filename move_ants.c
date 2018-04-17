@@ -15,7 +15,6 @@
 void	move_ants(t_ants *ants)
 {
 	t_room	**my_path;
-	// t_room	*finish;
 	int		i;
 	int		ant;
 	int 	j;
@@ -26,43 +25,20 @@ void	move_ants(t_ants *ants)
 	j = 1;
 	ant = 1;
 	my_path = ants->paths;
-	while (my_path[i] != NULL)
-	{
-		printf("%s\n", my_path[i]->name);
-		i++;
-	}
 	while (my_path[last]->is_end != 1)
 		last++;
-	printf("Number of ants: %d\n", ants->ant_count);
-	printf("last one: %s\n", my_path[last]->name);
-	printf("first one: %s\n", my_path[j]->name);
-
 	my_path[1]->number_of_ant = 1;
-	while (my_path[last]->number_of_ant != ants->ant_count)
+	while (my_path[last]->number_of_ant < ants->ant_count)
 	{
 		print_moves(my_path, last);
-		check_ants(my_path, last);
+		check_ants(my_path, last, ants->ant_count);
 	}
+	if (my_path[1]->number_of_ant != 0)
+		my_path[1]->number_of_ant = 0;
 	print_moves(my_path, last);
-
-
-	// my_path[1]->number_of_ant = 2;
-	// my_path[2]->number_of_ant = 1;
-	// print_moves(my_path, last);
-
-	// my_path[1]->number_of_ant = 3;
-	// my_path[2]->number_of_ant = 2;
-	// my_path[3]->number_of_ant = 1;
-	// print_moves(my_path, last);
-
-	// my_path[1]->number_of_ant = 0;
-	// my_path[2]->number_of_ant = 2;
-	// my_path[3]->number_of_ant = 1;
-	// print_moves(my_path, last);
-
 }
 
-void		check_ants(t_room **room, int i)
+void		check_ants(t_room **room, int i, int ant)
 {
 	t_room **my_path;
 
@@ -72,19 +48,26 @@ void		check_ants(t_room **room, int i)
 	int	j;
 
 	j = 0;
-	n = 1;
+	n = i;
 	temp = 0;
-	while (n < i) //room[i].is_start != 1)
+	while (my_path[n]->number_of_ant == 0)
+		n--;
+	while (n > 0)
 	{
 		j = n + 1;
 		temp = my_path[n]->number_of_ant;
-		my_path[n]->number_of_ant = temp + 1;
-		my_path[j]->number_of_ant = temp;
-
-
-		// printf("This is room: %s, ants: %d\n", my_path[n]->name, my_path[n]->number_of_ant);
-		// printf("Prev room: %s\n", room[i]->prev->name);
-		// room[i].number_of_ant = room[i].prev->number_of_ant;
+		if (my_path[j])
+		{
+			my_path[j]->number_of_ant = temp;
+			my_path[n]->number_of_ant = temp + 1;
+		}
+		n--;
+	}
+	n = 1;
+	while (n <= i)
+	{
+		if (my_path[n]->number_of_ant > ant)
+			my_path[n]->number_of_ant = 0;
 		n++;
 	}
 }

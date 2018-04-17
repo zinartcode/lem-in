@@ -39,11 +39,13 @@ int		read_file(t_ants *ants)
 
 	i = 0;
 	get_next_line(0, &line);
+	ft_printf("%s\n",line);
 	ants->ant_count = ft_atoi(line);
 	if (ants->ant_count <= 0 || ants->ant_count > 2147483647)
 		ft_error();
 	while (get_next_line(0, &line))
 	{
+		ft_printf("%s\n",line);
 		if (!ft_strcmp("##start", line))
 			ants->flag = 1;
 		else if (!ft_strcmp("##end", line))
@@ -58,6 +60,7 @@ int		read_file(t_ants *ants)
 			ft_error();
 		free(line);
 	}
+	ft_putchar('\n');
 	if (line)
 		free(line);
 	return (0);
