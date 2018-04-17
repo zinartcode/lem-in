@@ -38,30 +38,54 @@ void	move_ants(t_ants *ants)
 	printf("first one: %s\n", my_path[j]->name);
 
 	my_path[1]->number_of_ant = 1;
+	while (my_path[last]->number_of_ant != ants->ant_count)
+	{
+		print_moves(my_path, last);
+		check_ants(my_path, last);
+	}
 	print_moves(my_path, last);
 
-	my_path[1]->number_of_ant = 2;
-	my_path[2]->number_of_ant = 1;
-	print_moves(my_path, last);
 
-	my_path[1]->number_of_ant = 3;
-	my_path[2]->number_of_ant = 2;
-	my_path[3]->number_of_ant = 1;
-	print_moves(my_path, last);
+	// my_path[1]->number_of_ant = 2;
+	// my_path[2]->number_of_ant = 1;
+	// print_moves(my_path, last);
+
+	// my_path[1]->number_of_ant = 3;
+	// my_path[2]->number_of_ant = 2;
+	// my_path[3]->number_of_ant = 1;
+	// print_moves(my_path, last);
+
+	// my_path[1]->number_of_ant = 0;
+	// my_path[2]->number_of_ant = 2;
+	// my_path[3]->number_of_ant = 1;
+	// print_moves(my_path, last);
 
 }
 
-void	check_ants(t_room *room, int i)
+void		check_ants(t_room **room, int i)
 {
-	// t_room **my_path;
+	t_room **my_path;
 
-	// my_path = ants->paths;
-	while (room[i].is_start != 1)
+	my_path = room;
+	int	n;
+	int	temp;
+	int	j;
+
+	j = 0;
+	n = 1;
+	temp = 0;
+	while (n < i) //room[i].is_start != 1)
 	{
-		// printf("This is room: %s, ants: %d\n", room[i]->name, room[i]->number_of_ant);
+		j = n + 1;
+		temp = my_path[n]->number_of_ant;
+		my_path[n]->number_of_ant = temp + 1;
+		my_path[j]->number_of_ant = temp;
+
+
+		// printf("This is room: %s, ants: %d\n", my_path[n]->name, my_path[n]->number_of_ant);
 		// printf("Prev room: %s\n", room[i]->prev->name);
-		room[i].number_of_ant = room[i].prev->number_of_ant;
-		i--;
+		// room[i].number_of_ant = room[i].prev->number_of_ant;
+		n++;
 	}
 }
 

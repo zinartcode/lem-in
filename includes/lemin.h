@@ -100,7 +100,7 @@ void					store_path_2(t_ants *ants, t_room *room, int i);
 
 void					move_ants(t_ants *ants);
 void					print_moves(t_room **room, int i);
-void					check_ants(t_room *room, int i);
+void					check_ants(t_room **room, int i);
 void					print_ant(int ant, char *room);
 
 void					print_rooms(t_room *room);
