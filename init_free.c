@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 19:43:55 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 17:20:43 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/17 22:17:22 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init(t_ants *ants)
 	ants->ant_count = 0;
 	ants->room_count = 0;
 	ants->flag = 0;
+	ants->start_end = 0;
 	ants->rooms = NULL;
 	ants->paths = NULL;
 	ants->temp_path = NULL;

@@ -45,25 +45,38 @@ int		read_file(t_ants *ants)
 		ft_error();
 	while (get_next_line(0, &line))
 	{
-		ft_printf("%s\n",line);
-		if (!ft_strcmp("##start", line))
-			ants->flag = 1;
-		else if (!ft_strcmp("##end", line))
-			ants->flag = 2;
-		if (is_room(line))
-			add_room(ants, line);
-		else if (is_link(line))
-			add_link(ants, line);
-		else if (is_comment(line))
-			;
-		else
-			ft_error();
+		parse_file(ants, line);
 		free(line);
 	}
+	if (ants->start_end != 2)
+		ft_error();
 	ft_putchar('\n');
 	if (line)
 		free(line);
 	return (0);
+}
+
+void	parse_file(t_ants *ants, char *line)
+{
+	ft_printf("%s\n",line);
+	if (!ft_strcmp("##start", line))
+	{
+		ants->flag = 1;
+		ants->start_end++;
+	}
+	else if (!ft_strcmp("##end", line))
+	{
+		ants->flag = 2;
+		ants->start_end++;
+	}
+	if (is_room(line))
+		add_room(ants, line);
+	else if (is_link(line))
+		add_link(ants, line);
+	else if (is_comment(line))
+		;
+	else
+		ft_error();
 }
 
 void	ft_error(void)

@@ -6,40 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/10 20:58:35 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/17 21:47:26 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-int			is_link(char *line)
-{
-	int		i;
-	int		dash;
-	int		k;
-
-	i = 0;
-	dash = 0;
-	k = 0;
-	if (line[0] == '#' || line[0] == 'L')
-		return (0);
-	while (line[i])
-	{
-		if (line[i] == ' ' || line[i] == '\t')
-			ft_error();
-		if (line[i] != '-')
-			k++;
-		else if (k != 0 && line[i] == '-')
-		{
-			dash++;
-			k = 0;
-		}
-		i++;
-	}
-	if (k != 0 && dash == 1)
-		return (1);
-	return (0);
-}
 
 void		add_link(t_ants *ants, char *line)
 {
@@ -53,24 +24,7 @@ void		add_link(t_ants *ants, char *line)
 		temp = ants->rooms;
 		while (temp)
 		{
-			if (ft_strcmp(link[0], temp->name) == 0)
-			{
-				new = (t_link *)malloc(sizeof(t_link));
-				init_link(new);
-				new->name1 = ft_strdup(link[0]);
-				new->name2 = ft_strdup(link[1]);
-				new->parent = find_room(ants->rooms, link[1]);
-				link_to_room(temp, new);
-			}
-			else if (ft_strcmp(link[1], temp->name) == 0)
-			{
-				new = (t_link *)malloc(sizeof(t_link));
-				init_link(new);
-				new->name1 = ft_strdup(link[1]);
-				new->name2 = ft_strdup(link[0]);
-				new->parent = find_room(ants->rooms, link[0]);
-				link_to_room(temp, new);
-			}
+			new = create_link(ants, link, temp);
 			temp = temp->next;
 		}
 		free(link[0]);
@@ -80,19 +34,30 @@ void		add_link(t_ants *ants, char *line)
 		ft_error();
 }
 
-void	link_to_room(t_room *temp, t_link *new)
+t_link		*create_link(t_ants *ants, char **link, t_room *temp)
 {
-	t_link	*add;
+	t_link	*new;
 
-	if (temp->links == NULL)
-		temp->links = new;
-	else if (same_link(temp, new) != 1)
+	new = NULL;
+	if (ft_strcmp(link[0], temp->name) == 0)
 	{
-		add = temp->links;
-		while (add->next != NULL)
-			add = add->next;
-		add->next = new;
+		new = (t_link *)malloc(sizeof(t_link));
+		init_link(new);
+		new->name1 = ft_strdup(link[0]);
+		new->name2 = ft_strdup(link[1]);
+		new->parent = find_room(ants->rooms, link[1]);
+		link_to_room(temp, new);
 	}
+	else if (ft_strcmp(link[1], temp->name) == 0)
+	{
+		new = (t_link *)malloc(sizeof(t_link));
+		init_link(new);
+		new->name1 = ft_strdup(link[1]);
+		new->name2 = ft_strdup(link[0]);
+		new->parent = find_room(ants->rooms, link[0]);
+		link_to_room(temp, new);
+	}
+	return (new);
 }
 
 int		same_link(t_room *room, t_link *new)
@@ -135,6 +100,18 @@ int			valid_link(t_ants *ants, char *line)
 		return (0);
 	temp = ants->rooms;
 	flag = 0;
+	if (valid_link_2(ants, temp, link))
+		return (1);
+	return (0);
+}
+
+int			valid_link_2(t_ants *ants, t_room *room, char **link)
+{
+	int		flag;
+	t_room	*temp;
+
+	flag = 0;
+	temp = room;
 	while (temp != NULL)
 	{
 		if (ft_strcmp(temp->name, link[0]) == 0)
@@ -155,23 +132,3 @@ int			valid_link(t_ants *ants, char *line)
 	}
 	return (0);
 }
-
-void	print_links(t_ants *ants)
-{
-	t_link	*temp;
-	t_room	*temp_room;
-
-	temp_room = ants->rooms;
-	while (temp_room != NULL)
-	{
-		temp = temp_room->links;
-		ft_printf(RED"I'm in room %s\n"NRM, temp_room->name);
-		while (temp != NULL)
-		{
-			ft_printf("Path to room: %s\n", temp->parent->name);
-			temp = temp->next;
-		}
-		temp_room = temp_room->next;
-	}
-}
-

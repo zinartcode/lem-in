@@ -60,16 +60,15 @@ void	find_paths_2(t_ants *ants, t_room *root, t_room *ptr)
 		}
 		root = root->next;
 	}
-	store_path(ants, ptr);
+	store_path(ants, ptr, i);
 }
 
-void			store_path(t_ants *ants, t_room *room)
+void			store_path(t_ants *ants, t_room *room, int i)
 {
 	t_room		*ptr;
 	t_room		*finish;
 	t_room		*start;
-	int			i;
-
+	
 	ptr = room;
 	i = 0;
 	while (all_rooms[i] != NULL)

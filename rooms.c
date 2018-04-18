@@ -6,28 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/12 00:13:27 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/17 21:48:12 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-int		is_room(char *line)
-{
-	if (line[0] == '#' || line[0] == 'L')
-		return (0);
-	else if ((ft_space(line)) == 2)
-		return (1);
-	return (0);
-}
-
-int		is_comment(char *line)
-{
-	if (line[0] == '#' || line[0] == 'L')
-		return (1);
-	else
-		return (0);
-}
 
 t_room	*find_room(t_room *room, char *name)
 {
@@ -70,18 +53,17 @@ void	add_room(t_ants *ants, char *line)
 	ants->flag = 0;
 }
 
-void	print_rooms(t_room *room)
+void	link_to_room(t_room *temp, t_link *new)
 {
-	t_room		*temp;
-	temp = room;
-	while (temp != NULL)
+	t_link	*add;
+
+	if (temp->links == NULL)
+		temp->links = new;
+	else if (same_link(temp, new) != 1)
 	{
-		ft_printf("here is the room: %s, it's position %d ", temp->name, temp->position);
-		if (temp->is_start == 1)
-			ft_printf("its start room");
-		else if (temp->is_end == 1)
-			ft_printf("it's end room");
-		ft_putchar('\n');
-		temp = temp->next;
+		add = temp->links;
+		while (add->next != NULL)
+			add = add->next;
+		add->next = new;
 	}
 }
