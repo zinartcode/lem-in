@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 19:43:55 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 22:17:22 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 00:23:40 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ void	init_link(t_link *link)
 	link->next = NULL;
 }
 
+void				free_array(char **arr)
+{
+	int i;
+
+	i = 0;
+	if (arr[i])
+	{
+		while (arr[i])
+		{
+			free(arr[i]);
+			i++;
+		}
+		// free(arr);
+	}
+}
+
 void	free_all(t_ants *ants)
 {
 	if (ants->rooms)
@@ -56,7 +72,7 @@ void	free_all(t_ants *ants)
 	// if (lemin->rooms)
 	// 	delete_path(lemin);
 	// ft_strdel(&lemin->input);
-	ft_memdel((void*)&ants);	
+	// ft_memdel((void*)&ants);	
 }
 
 void	free_rooms(t_room *rooms)

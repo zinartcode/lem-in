@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 22:17:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 00:17:11 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void					init(t_ants *ants);
 void					init_room(t_room *room);
 void					init_link(t_link *link);
 void					free_all(t_ants *ants);
+void					free_array(char **arr);
 void					free_rooms(t_room *rooms);
 void					delete_links(t_link *links);
 int						read_file(t_ants *ants);

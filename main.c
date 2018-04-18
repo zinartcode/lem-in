@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/12 00:18:24 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 00:08:03 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int			main(void)
 	ft_solve(ants);
 	move_ants(ants);
 	// free_all(ants);
-	// while(1)
-	// 	;
+	while(1)
+		;
 	return (0);
 }
 
@@ -40,6 +40,7 @@ int		read_file(t_ants *ants)
 	i = 0;
 	get_next_line(0, &line);
 	ft_printf("%s\n",line);
+	free(line);
 	ants->ant_count = ft_atoi(line);
 	if (ants->ant_count <= 0 || ants->ant_count > 2147483647)
 		ft_error();
@@ -70,7 +71,11 @@ void	parse_file(t_ants *ants, char *line)
 		ants->start_end++;
 	}
 	if (is_room(line))
+	{
+		ants->room_count++;
 		add_room(ants, line);
+		ants->flag = 0;
+	}
 	else if (is_link(line))
 		add_link(ants, line);
 	else if (is_comment(line))

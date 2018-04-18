@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 21:47:26 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 00:24:40 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int			valid_link(t_ants *ants, char *line)
 	t_room	*temp;
 	char	*link[2];
 	int		i;
-	int		flag;
 
 	i = 0;
 	while (line[i] && line[i] != '-')
@@ -99,9 +98,14 @@ int			valid_link(t_ants *ants, char *line)
 	if (ft_strcmp(link[0],link[1]) == 0)
 		return (0);
 	temp = ants->rooms;
-	flag = 0;
 	if (valid_link_2(ants, temp, link))
+	{
+		free(link[0]);
+		free(link[1]);
 		return (1);
+	}
+	free(link[0]);
+	free(link[1]);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 21:48:12 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/17 23:49:08 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	add_room(t_ants *ants, char *line)
 	t_room		*temp;
 
 	i = 0;
-	ants->room_count++;
 	new = (t_room *)malloc(sizeof(t_room));
 	init_room(new);
 	while (line[i] != ' ')
@@ -50,7 +49,6 @@ void	add_room(t_ants *ants, char *line)
 		temp->next = new;
 		new->prev = temp;
 	}
-	ants->flag = 0;
 }
 
 void	link_to_room(t_room *temp, t_link *new)
