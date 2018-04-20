@@ -17,7 +17,7 @@ to compile. An executable named ./lem-in should be created.
 
 ## How to use
 
-lem-in takes commands on stdin. Tests and sample maps can be found in the [tests](tests/) folder.
+lem-in takes commands on stdin. Tests and sample maps can be found in folder.
 
 ```
 Usage: ./lem-in  < test_map
