@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 22:10:54 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 22:14:00 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:36:14 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	print_moves(t_room **room, int i)
 void	print_short(t_room **room, int i)
 {
 	int	n;
+
 	n = 1;
 	while (n <= i)
 	{
@@ -39,9 +40,28 @@ void	print_short(t_room **room, int i)
 
 void	print_ant(int ant, char *room)
 {
-	ft_putchar('L');
-	ft_putnbr(ant);
-	ft_putchar('-');
-	ft_putstr(room);
-	ft_putchar(' ');
+	if (ant % 2 == 0)
+	{
+		ft_putstr(GRN"L");
+		ft_putnbr(ant);
+		ft_putstr("-");
+		ft_putstr(room);
+		ft_putstr(" "NRM);
+	}
+	else if (ant % 3 == 0)
+	{
+		ft_putstr(RED"L");
+		ft_putnbr(ant);
+		ft_putstr("-");
+		ft_putstr(room);
+		ft_putstr(" "NRM);
+	}
+	else
+	{
+		ft_putstr("L");
+		ft_putnbr(ant);
+		ft_putstr("-");
+		ft_putstr(room);
+		ft_putstr(" ");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:06:14 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 23:49:08 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/19 16:45:16 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,11 @@ void	link_to_room(t_room *temp, t_link *new)
 			add = add->next;
 		add->next = new;
 	}
+	else
+	{
+		free(new->name1);
+		free(new->name2);
+		free(new);
+	}
+	return ;
 }

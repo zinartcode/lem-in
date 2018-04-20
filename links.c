@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 22:34:26 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:24:40 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/19 18:12:04 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void		add_link(t_ants *ants, char *line)
 {
+	char	**link;
+	t_room	*temp;
+	t_link	*new;
+
+	link = NULL;
+	temp = NULL;
+	new = NULL;
 	if (valid_link(ants, line) == 1)
 	{
-		char **link;
-		t_room *temp;
-		t_link *new;
-
 		link = ft_strsplit(line, '-');
 		temp = ants->rooms;
 		while (temp)
@@ -29,6 +32,7 @@ void		add_link(t_ants *ants, char *line)
 		}
 		free(link[0]);
 		free(link[1]);
+		free(link);
 	}
 	else
 		ft_error();
@@ -60,14 +64,13 @@ t_link		*create_link(t_ants *ants, char **link, t_room *temp)
 	return (new);
 }
 
-int		same_link(t_room *room, t_link *new)
+int			same_link(t_room *room, t_link *new)
 {
 	t_link	*temp;
 	int		room1;
 	int		room2;
 
 	temp = room->links;
-
 	while (temp && new)
 	{
 		room1 = 0;
@@ -77,7 +80,7 @@ int		same_link(t_room *room, t_link *new)
 		if (ft_strcmp(new->name2, temp->name2) == 0)
 			room2 = 1;
 		if (room1 == 1 && room2 == 1)
-		return (1);
+			return (1);
 		temp = temp->next;
 	}
 	return (0);
@@ -95,7 +98,7 @@ int			valid_link(t_ants *ants, char *line)
 	link[0] = ft_strndup(line, i);
 	i++;
 	link[1] = ft_strdup(&line[i++]);
-	if (ft_strcmp(link[0],link[1]) == 0)
+	if (ft_strcmp(link[0], link[1]) == 0)
 		return (0);
 	temp = ants->rooms;
 	if (valid_link_2(ants, temp, link))
@@ -121,7 +124,7 @@ int			valid_link_2(t_ants *ants, t_room *room, char **link)
 		if (ft_strcmp(temp->name, link[0]) == 0)
 		{
 			flag = 1;
-			break;
+			break ;
 		}
 		temp = temp->next;
 	}

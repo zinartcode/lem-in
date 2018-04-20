@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 19:10:23 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:08:03 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/19 18:39:32 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,19 @@ int			main(void)
 		ft_error();
 		return (0);
 	}
-	// print_rooms(ants->rooms);
 	ft_solve(ants);
 	move_ants(ants);
-	// free_all(ants);
-	while(1)
-		;
 	return (0);
 }
 
-int		read_file(t_ants *ants)
+int			read_file(t_ants *ants)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
 	get_next_line(0, &line);
-	ft_printf("%s\n",line);
+	ft_printf("%s\n", line);
 	free(line);
 	ants->ant_count = ft_atoi(line);
 	if (ants->ant_count <= 0 || ants->ant_count > 2147483647)
@@ -57,9 +53,9 @@ int		read_file(t_ants *ants)
 	return (0);
 }
 
-void	parse_file(t_ants *ants, char *line)
+void		parse_file(t_ants *ants, char *line)
 {
-	ft_printf("%s\n",line);
+	ft_printf("%s\n", line);
 	if (!ft_strcmp("##start", line))
 	{
 		ants->flag = 1;
@@ -84,7 +80,7 @@ void	parse_file(t_ants *ants, char *line)
 		ft_error();
 }
 
-void	ft_error(void)
+void		ft_error(void)
 {
 	ft_putstr_fd(RED"Error\n"NRM, 2);
 	exit(0);

@@ -6,13 +6,13 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/17 21:42:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/17 21:43:42 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 02:50:28 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		is_room(char *line)
+int			is_room(char *line)
 {
 	if (line[0] == '#' || line[0] == 'L')
 		return (0);
@@ -21,7 +21,7 @@ int		is_room(char *line)
 	return (0);
 }
 
-int		is_comment(char *line)
+int			is_comment(char *line)
 {
 	if (line[0] == '#' || line[0] == 'L')
 		return (1);

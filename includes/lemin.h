@@ -6,13 +6,15 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 19:50:29 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:17:11 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:44:56 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LEMIN_H
+# define LEMIN_H
+
 # include "../libft/includes/libft.h"
 # include "../libft/ft_printf/includes/ft_printf.h"
-# include <stdlib.h>
 # include <stdio.h>
 # define SIZE 40
 # define RED "\x1B[31m"
@@ -48,7 +50,7 @@ typedef	struct			s_room
 	struct s_room		*next;
 }						t_room;
 
-struct	s_room	**all_rooms;
+struct s_room	**all_rooms;
 
 typedef	struct			s_ants
 {
@@ -64,9 +66,6 @@ typedef	struct			s_ants
 void					init(t_ants *ants);
 void					init_room(t_room *room);
 void					init_link(t_link *link);
-void					free_all(t_ants *ants);
-void					free_array(char **arr);
-void					free_rooms(t_room *rooms);
 void					delete_links(t_link *links);
 int						read_file(t_ants *ants);
 void					ft_solve (t_ants *ants);
@@ -103,3 +102,5 @@ void					check_ants_2(t_room **room, int i, int ant);
 void					print_moves(t_room **room, int i);
 void					print_ant(int ant, char *room);
 void					print_short(t_room **room, int i);
+
+#endif

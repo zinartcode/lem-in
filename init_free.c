@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/30 19:43:55 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:23:40 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 02:02:50 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,56 +47,4 @@ void	init_link(t_link *link)
 	link->parent = NULL;
 	link->path = NULL;
 	link->next = NULL;
-}
-
-void				free_array(char **arr)
-{
-	int i;
-
-	i = 0;
-	if (arr[i])
-	{
-		while (arr[i])
-		{
-			free(arr[i]);
-			i++;
-		}
-		// free(arr);
-	}
-}
-
-void	free_all(t_ants *ants)
-{
-	if (ants->rooms)
-		free_rooms(ants->rooms);
-	// if (lemin->rooms)
-	// 	delete_path(lemin);
-	// ft_strdel(&lemin->input);
-	// ft_memdel((void*)&ants);	
-}
-
-void	free_rooms(t_room *rooms)
-{
-	while (rooms)
-	{
-		while (rooms->links)
-		{
-			delete_links(rooms->links);
-			ft_memdel((void*)&rooms->name);
-			free(rooms->name);
-			// rooms->links = rooms->links->next;
-		}
-		rooms = rooms->next;
-	}
-}
-
-void	delete_links(t_link *links)
-{
-	while (links)
-	{
-		ft_memdel((void*)&links->name1);
-		ft_memdel((void*)&links->name2);
-		free(links);
-		links = links->next;
-	}
 }

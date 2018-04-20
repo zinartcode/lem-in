@@ -6,11 +6,11 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/29 21:00:37 by azinnatu          #+#    #+#              #
-#    Updated: 2018/04/17 22:14:16 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/04/18 02:18:03 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lem_in
+NAME = lem-in
 
 FLAGS = -Wall -Wextra -Werror -g
 CC = gcc

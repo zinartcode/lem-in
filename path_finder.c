@@ -6,17 +6,17 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 23:05:22 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:26:37 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 02:54:24 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-void		find_paths(t_ants *ants, t_room *root)
+void			find_paths(t_ants *ants, t_room *root)
 {
-	t_room	*ptr;
-	t_room	*original;
-	int		i;
+	t_room		*ptr;
+	t_room		*original;
+	int			i;
 
 	i = 0;
 	original = root;
@@ -37,9 +37,9 @@ void		find_paths(t_ants *ants, t_room *root)
 	find_paths_2(ants, root, ptr);
 }
 
-void	find_paths_2(t_ants *ants, t_room *root, t_room *ptr)
+void			find_paths_2(t_ants *ants, t_room *root, t_room *ptr)
 {
-	int	i;
+	int			i;
 
 	clean_rooms(all_rooms);
 	ptr = root;
@@ -68,7 +68,7 @@ void			store_path(t_ants *ants, t_room *room, int i)
 	t_room		*ptr;
 	t_room		*finish;
 	t_room		*start;
-	
+
 	ptr = room;
 	i = 0;
 	while (all_rooms[i] != NULL)
@@ -92,7 +92,7 @@ void			store_path(t_ants *ants, t_room *room, int i)
 	store_path_2(ants, ptr, i);
 }
 
-void	store_path_2(t_ants *ants, t_room *room, int i)
+void			store_path_2(t_ants *ants, t_room *room, int i)
 {
 	t_room		**temp;
 	t_room		*ptr;
@@ -110,5 +110,5 @@ void	store_path_2(t_ants *ants, t_room *room, int i)
 	temp[i] = ptr;
 	ants->paths = temp;
 	i = 0;
-	return ;	
+	return ;
 }

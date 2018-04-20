@@ -6,24 +6,18 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 00:16:41 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 00:31:23 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 02:43:39 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-void	move_ants(t_ants *ants)
+void		move_ants(t_ants *ants)
 {
 	t_room	**my_path;
-	int		i;
-	int		ant;
-	int 	j;
 	int		last;
 
-	i = 0;
 	last = 0;
-	j = 1;
-	ant = 1;
 	my_path = ants->paths;
 	while (my_path[last]->is_end != 1)
 		last++;
@@ -40,18 +34,17 @@ void	move_ants(t_ants *ants)
 	}
 	if (my_path[1]->number_of_ant != 0)
 		my_path[1]->number_of_ant = 0;
-		print_moves(my_path, last);
+	print_moves(my_path, last);
 }
 
 void		check_ants(t_room **room, int i, int ant)
 {
-	t_room **my_path;
+	t_room	**my_path;
+	int		n;
+	int		temp;
+	int		j;
 
 	my_path = room;
-	int	n;
-	int	temp;
-	int	j;
-
 	j = 0;
 	n = i;
 	temp = 0;

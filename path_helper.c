@@ -6,9 +6,10 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 23:02:46 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/11 23:07:43 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/18 02:55:15 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "lemin.h"
 
 int			count_links(t_room *room)
@@ -45,9 +46,9 @@ void		create_links(t_room *room)
 	room->nodes[i] = NULL;
 }
 
-void	clean_rooms(t_room	**all_rooms)
+void		clean_rooms(t_room **all_rooms)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (all_rooms[i] != NULL)
