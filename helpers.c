@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 22:29:16 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/19 16:42:56 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/20 18:05:49 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_room		*start_move(t_room *room)
 	t_room	*temp;
 
 	temp = room;
-	while (temp->is_start != 1)
+	while (temp->next != NULL && temp->is_start != 1)
 		temp = temp->next;
 	start = temp;
 	temp->prev->next = temp->next;

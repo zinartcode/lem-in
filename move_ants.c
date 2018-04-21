@@ -18,8 +18,10 @@ void		move_ants(t_ants *ants)
 	int		last;
 
 	last = 0;
+	if (ants->paths[0] == NULL)
+		ft_error();
 	my_path = ants->paths;
-	while (my_path[last]->is_end != 1)
+	while (my_path[last] && my_path[last]->is_end != 1)
 		last++;
 	if (last <= 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 23:05:22 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/04/18 02:54:24 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/04/20 18:03:59 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void			store_path(t_ants *ants, t_room *room, int i)
 		i++;
 	}
 	i = 0;
-	ptr = finish;
 	while (ptr != start)
 	{
 		ptr = ptr->prev;
