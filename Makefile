@@ -47,6 +47,7 @@ RM = rm -rf
 
 GREEN = \033[32m
 RED = \033[31m
+NRM = \x1B[0m
 
 all : $(NAME)
 
@@ -55,7 +56,7 @@ $(NAME): $(OBJ)
 	@make -C libft/ft_printf
 	$(CC) $(FLAGS) $(INC) -c $(SRC)
 	$(CC) $(FLAGS) $(LIB) $(OB1) -o $(NAME)
-	@echo "$(GREEN)lem-in: creating object files"
+	@echo "$(GREEN)lem-in: creating object files$(NRM)"
 
 rmbin:
 	rm -rf $(NAME)
@@ -64,7 +65,7 @@ rmobj:
 	rm -rf *.o
 
 again: rmbin rmobj all
-	
+
 
 clean:
 	@/bin/$(RM) $(OB1)
@@ -75,7 +76,7 @@ fclean: clean
 	@make -C $(dir $(LIBFT)) fclean
 	@make -C libft/ft_printf fclean
 	@/bin/$(RM) $(NAME)
-	@echo "$(RED)lem-in: deleting object files"
+	@echo "$(RED)lem-in: deleting object files$(NRM)"
 
 re: fclean all
 
